@@ -85,6 +85,9 @@ section.block{padding:64px 0}
 /* about + contact */
 .about{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:start}
 .about p{max-width:62ch;margin:0 0 14px}
+.me{display:flex;gap:28px;align-items:flex-start}
+.avatar{flex:none;width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 0 0 6px rgba(247,148,29,.12)}
+@media (max-width:560px){.me{flex-direction:column;gap:18px}.avatar{width:120px;height:120px}}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
 .panel h3{font:700 18px/1.2 var(--display);margin:0 0 12px}
 .contact-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
@@ -250,11 +253,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
   <section class="block" id="about">
     <div class="wrap about">
-      <div>
+      <div class="me">
+        <img class="avatar" src="img/petko.webp" alt="Петко Петков (5co)" width="150" height="150">
+        <div>
         <h2>За мен</h2>
         <p>Аз съм Петко Петков (5co) — графичен дизайнер и учител. В училище всеки ден виждам какво отнема време на учителите и учениците.</p>
         <p>Така се роди BoxLab: малки програми, всяка от които решава конкретна задача — от управлението на цял кабинет до разгъвката на една кутия. Пиша ги сам, тествам ги в истински класни стаи и ги предоставям безплатно на училищата.</p>
         <p>Имате идея или открихте грешка? Пишете ми — от такива съобщения се раждат следващите версии.</p>
+        </div>
       </div>
       <div class="panel" id="contact">
         <h3>Контакти</h3>
