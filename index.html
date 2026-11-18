@@ -4,125 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BoxLab — програмите на 5co</title>
+<meta name="description" content="Безплатни програми за Windows от Петко Петков (5co): SchoolControl, FVS Coach, SCHBox, BoxMAG, ImageBox, DownBox, iBox.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  /* Layout: dark workshop page — hero, two shelves of app cards, about + contacts; one orange accent for actions */
-  --bg:#121826;
-  --surface:#1b2335;
-  --surface-2:#232d43;
-  --line:#2f3a54;
-  --text:#e8ecf4;
-  --muted:#9aa6bd;
-  --accent:#f7941d;
-  --accent-ink:#1a1206;
-  --cyan:#33c4f2;
-  --display:"Montserrat",system-ui,sans-serif;
-  --body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 var(--body)}
-a{color:inherit}
-img{max-width:100%;display:block}
-.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
-:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
-
-/* nav */
-header.nav{position:sticky;top:0;z-index:10;background:rgba(18,24,38,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;gap:20px;min-height:64px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
-.brand{display:flex;align-items:center;text-decoration:none}
-.brand img{height:34px;width:auto}
-.nav nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
-.nav nav a{text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:8px;font-weight:500;font-size:15px}
-.nav nav a:hover{color:var(--text);background:var(--surface)}
-
-.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:600 15px/1 var(--body);padding:12px 18px;border-radius:10px;border:1px solid transparent;cursor:pointer;white-space:nowrap}
-.btn-accent{background:var(--accent);color:var(--accent-ink)}
-.btn-accent:hover{background:#ffa83d}
-.btn-ghost{border-color:var(--line);color:var(--text)}
-.btn-ghost:hover{border-color:var(--muted)}
-.btn svg{width:16px;height:16px;flex:none}
-
-/* hero */
-.hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
-.hero h1{font:800 clamp(30px,5vw,52px)/1.1 var(--display);margin:0 0 18px;max-width:18ch;text-wrap:balance}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero p{color:var(--muted);font-size:18px;max-width:58ch;margin:0 0 28px}
-.hero .actions{display:flex;gap:12px;flex-wrap:wrap}
-.facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:40px;color:var(--muted);font-size:14px}
-.facts b{display:block;color:var(--text);font:700 22px/1.2 var(--display)}
-
-/* sections */
-section.block{padding:64px 0}
-.block h2{font:800 clamp(24px,3.2vw,34px)/1.2 var(--display);margin:0 0 8px;text-wrap:balance}
-.block .lead{color:var(--muted);margin:0 0 32px;max-width:62ch}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
-.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-.shot{position:relative;aspect-ratio:16/10;display:grid;place-items:center;overflow:hidden;background:var(--shot,#1e293b)}
-.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-.card .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
-.card h3{font:700 21px/1.2 var(--display);margin:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.tag{font:600 12px/1 var(--body);padding:5px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
-.tag.soon{color:var(--cyan);border-color:rgba(51,196,242,.4)}
-.tag.dev{color:var(--accent);border-color:rgba(247,148,29,.45)}
-.motto{color:var(--cyan);font-weight:600;font-size:14px;margin:0}
-.card p.desc{margin:0;color:var(--muted);font-size:15px}
-.card .dl{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:8px}
-.meta{font-size:13px;color:var(--muted)}
-
-.rd{background:linear-gradient(135deg,#1c2c4a,#0f1626);color:var(--text)}
-.rd div{text-align:center}
-.rd b{display:block;font:800 40px/1 var(--display);letter-spacing:.02em}
-.rd b span{color:var(--accent)}
-.rd small{color:var(--muted);font-size:14px}
-
-/* about + contact */
-.about{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:start}
-.about p{max-width:62ch;margin:0 0 14px}
-.me{display:flex;gap:28px;align-items:flex-start}
-.avatar{flex:none;width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 0 0 6px rgba(247,148,29,.12)}
-@media (max-width:560px){.me{flex-direction:column;gap:18px}.avatar{width:120px;height:120px}}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
-.panel h3{font:700 18px/1.2 var(--display);margin:0 0 12px}
-.contact-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-.contact-list a{text-decoration:none}
-.contact-list a:hover{color:var(--accent)}
-.contact-list span{display:block;font-size:13px;color:var(--muted)}
-.qr-box{display:flex;gap:16px;align-items:center;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
-.qr-box .qr{width:116px;height:116px;display:block;border-radius:10px;flex:none}
-.qr-box a{text-decoration:none}
-.qr-box a:hover{color:var(--accent)}
-.qr-box span{display:block;font-size:13px;color:var(--muted)}
-.qr-box small{display:block;color:var(--muted);font-size:13px;margin-top:6px;max-width:26ch}
-.support{margin-top:28px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:linear-gradient(90deg,rgba(247,148,29,.16),rgba(247,148,29,.04));border:1px solid rgba(247,148,29,.4);border-radius:16px;padding:24px}
-.support h3{font:700 20px/1.2 var(--display);margin:0 0 6px}
-.support p{margin:0;color:var(--muted);max-width:56ch}
-
-footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:14px}
-footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-
-@media (max-width:760px){
-  .about{grid-template-columns:1fr}
-  .nav nav{margin-left:0;width:100%}
-  .grid{grid-template-columns:1fr}
-}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="BoxLab — към началото"><img src="img/boxlab-logo.webp" alt="BoxLab" width="166" height="34"></a>
+    <a class="brand" href="index.html" aria-label="BoxLab — към началото"><img src="img/boxlab-logo.webp" alt="BoxLab" width="166" height="34"></a>
     <nav aria-label="Основно меню">
-      <a href="#school">Инструменти за училище</a>
-      <a href="#other">Други инструменти</a>
-      <a href="#about">За мен</a>
-      <a href="#contact">Контакти</a>
+      <a href="index.html#school">Инструменти за училище</a>
+      <a href="index.html#other">Други инструменти</a>
+      <a href="index.html#about">За мен</a>
+      <a href="index.html#contact">Контакти</a>
     </nav>
     <a class="btn btn-accent" href="https://revolut.me/5co5cov" target="_blank" rel="noopener">Подкрепи разработките</a>
   </div>
@@ -150,109 +46,103 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <h2>Инструменти за училище</h2>
       <p class="lead">За компютърните кабинети, учителите по ФВС и съставянето на седмичната програма.</p>
       <div class="grid">
-
         <article class="card">
-          <div class="shot" style="--shot:#1e293b"><img src="img/schoolcontrol.webp" alt="Splash екран на SchoolControl" loading="lazy"></div>
+          <a class="card-link" href="apps/schoolcontrol.html" tabindex="-1" aria-hidden="true"><div class="shot" style="--shot:#1e293b"><img src="img/schoolcontrol.webp" alt="Splash екран на SchoolControl" loading="lazy"></div></a>
           <div class="body">
-            <h3>SchoolControl <span class="tag">v8.1</span></h3>
+            <h3><a href="apps/schoolcontrol.html">SchoolControl</a> <span class="tag">v8.1</span></h3>
             <p class="motto">Централизирано управление на ученически компютри</p>
             <p class="desc">Управление на компютърните кабинети от едно място: изключване, рестартиране, заключване на екрана и съобщения до учениците, статус на всеки компютър в реално време. Включва уеб панел с QR код за управление от телефона.</p>
             <div class="dl">
-              <a class="btn btn-accent" href="https://drive.google.com/file/d/1OH3-gC4MhzktRUD9_4znTt1HQbsIjUmk/view?usp=drive_link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Windows 10 / 11</a>
-              <a class="btn btn-ghost" href="https://drive.google.com/file/d/1CXPhzK3GliVkLU9mATM-00afcTiWIHGd/view?usp=drive_link" target="_blank" rel="noopener">Windows 7 (64-bit)</a>
+              <a class="btn btn-accent" href="apps/schoolcontrol.html">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             </div>
           </div>
         </article>
-
         <article class="card">
-          <div class="shot" style="--shot:#111827"><img src="img/fvscoach.webp" alt="Splash екран на FVS Coach" loading="lazy"></div>
+          <a class="card-link" href="apps/fvs-coach.html" tabindex="-1" aria-hidden="true"><div class="shot" style="--shot:#111827"><img src="img/fvscoach.webp" alt="Splash екран на FVS Coach" loading="lazy"></div></a>
           <div class="body">
-            <h3>FVS Coach <span class="tag">v1.1</span></h3>
+            <h3><a href="apps/fvs-coach.html">FVS Coach</a> <span class="tag">v1.1</span></h3>
             <p class="motto">От учители за учители!</p>
             <p class="desc">Софтуерен инструмент за оценяване на физическата дееспособност на учениците от 1 до 12 клас — класове, измервания, оценки по критериите и проследяване на напредъка.</p>
             <div class="dl">
-              <a class="btn btn-accent" href="https://drive.google.com/file/d/1Hf_mr8f53ITGiLJ4NSSNK9ZMdFgHavs0/view?usp=drive_link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Изтегли</a>
+              <a class="btn btn-accent" href="apps/fvs-coach.html">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             </div>
           </div>
         </article>
-
         <article class="card">
-          <div class="shot" style="--shot:#242449"><img src="img/schbox.webp" alt="Splash екран на SCHBox" loading="lazy"></div>
+          <a class="card-link" href="apps/schbox.html" tabindex="-1" aria-hidden="true"><div class="shot" style="--shot:#242449"><img src="img/schbox.webp" alt="Splash екран на SCHBox" loading="lazy"></div></a>
           <div class="body">
-            <h3>SCHBox <span class="tag soon">Очаквайте скоро</span></h3>
+            <h3><a href="apps/schbox.html">SCHBox</a> <span class="tag soon">Очаквайте скоро</span></h3>
             <p class="motto">Създаване на учебни седмични разписания</p>
             <p class="desc">Седмични програми за класове, учители и кабинети. Учители специалисти, заключени часове, ръчно местене с влачене, други дейности и дежурства. Експорт в Word, Excel и PDF и директен печат.</p>
-            <div class="dl"><span class="meta">Приложението е в последна фаза на тестване.</span></div>
+            <div class="dl">
+              <a class="btn btn-accent" href="apps/schbox.html">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
           </div>
         </article>
-
       </div>
     </div>
   </section>
 
-  <section class="block" id="other" style="background:#0f1420;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <section class="block alt" id="other">
     <div class="wrap">
       <h2>Други софтуерни инструменти</h2>
       <p class="lead">Програми за графичен дизайн, изображения, видео, iPhone и отдалечен достъп.</p>
       <div class="grid">
-
         <article class="card">
-          <div class="shot" style="--shot:#2b2876"><img src="img/boxmag.webp" alt="Splash екран на BoxMAG" loading="lazy"></div>
+          <a class="card-link" href="apps/boxmag.html" tabindex="-1" aria-hidden="true"><div class="shot" style="--shot:#2b2876"><img src="img/boxmag.webp" alt="Splash екран на BoxMAG" loading="lazy"></div></a>
           <div class="body">
-            <h3>BoxMAG <span class="tag">v2.4</span></h3>
+            <h3><a href="apps/boxmag.html">BoxMAG</a> <span class="tag">v2.4</span></h3>
             <p class="motto">От пиксела до рафта</p>
             <p class="desc">Разгъвки на опаковки — кутии, торбички, етикети, чаши — с 3D преглед, поставяне на дизайн и експорт в PDF, SVG, EPS и PNG. Създадена за учениците по графичен дизайн.</p>
             <div class="dl">
-              <a class="btn btn-accent" href="https://drive.google.com/file/d/1gAkdbxF0jY8W7kGCFCd62C63rsixD9_W/view?usp=drive_link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Изтегли</a>
+              <a class="btn btn-accent" href="apps/boxmag.html">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             </div>
           </div>
         </article>
-
         <article class="card">
-          <div class="shot" style="--shot:#d6d6d6"><img src="img/imagebox.webp" alt="Splash екран на ImageBox" loading="lazy"></div>
+          <a class="card-link" href="apps/imagebox.html" tabindex="-1" aria-hidden="true"><div class="shot" style="--shot:#d6d6d6"><img src="img/imagebox.webp" alt="Splash екран на ImageBox" loading="lazy"></div></a>
           <div class="body">
-            <h3>ImageBox <span class="tag">v2.7</span></h3>
+            <h3><a href="apps/imagebox.html">ImageBox</a> <span class="tag">v2.7</span></h3>
             <p class="motto">Преглед, конвертиране и редакция на изображения</p>
             <p class="desc">JPG, PNG, HEIC, RAW, PSD, CDR, AI, EPS и още. Вграден видео плейър и конвертор, корекции, печат и сканиране, меню с десен бутон в Windows.</p>
             <div class="dl">
-              <a class="btn btn-accent" href="https://drive.google.com/file/d/10o6xnFEgeAXe3vDWp8zsMofTRRjuY5nA/view?usp=drive_link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Изтегли</a>
+              <a class="btn btn-accent" href="apps/imagebox.html">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             </div>
           </div>
         </article>
-
         <article class="card">
-          <div class="shot" style="--shot:#440018"><img src="img/downbox.webp" alt="Splash екран на DownBox" loading="lazy"></div>
+          <a class="card-link" href="apps/downbox.html" tabindex="-1" aria-hidden="true"><div class="shot" style="--shot:#440018"><img src="img/downbox.webp" alt="Splash екран на DownBox" loading="lazy"></div></a>
           <div class="body">
-            <h3>DownBox <span class="tag">v1.2</span></h3>
+            <h3><a href="apps/downbox.html">DownBox</a> <span class="tag">v1.2</span></h3>
             <p class="motto">Свали всяко видео от интернет</p>
             <p class="desc">Видео до 4K, MP3 с обложка и субтитри (SRT) от YouTube, Vimeo, TikTok, Facebook, Instagram и VBox7.</p>
             <div class="dl">
-              <a class="btn btn-accent" href="https://drive.google.com/file/d/1Vm9qY-jGfGt747HTL3-gNJ50uSFfgp23/view?usp=drive_link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Изтегли</a>
+              <a class="btn btn-accent" href="apps/downbox.html">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             </div>
           </div>
         </article>
-
         <article class="card">
-          <div class="shot" style="--shot:#e6e7e8"><img src="img/ibox.webp" alt="Splash екран на iBox" loading="lazy"></div>
+          <a class="card-link" href="apps/ibox.html" tabindex="-1" aria-hidden="true"><div class="shot" style="--shot:#e6e7e8"><img src="img/ibox.webp" alt="Splash екран на iBox" loading="lazy"></div></a>
           <div class="body">
-            <h3>iBox</h3>
+            <h3><a href="apps/ibox.html">iBox</a> </h3>
             <p class="motto">Твоят дигитален мост</p>
-            <p class="desc">Трансфер на музика, снимки, видео, рингтонове и файлове към iPhone и iPad по кабел и пълен архив на устройството — без iTunes.</p>
+            <p class="desc">Трансфер на музика, снимки, видео, рингтонове и файлове към iPhone и iPad по кабел и пълен архив на устройството.</p>
             <div class="dl">
-              <a class="btn btn-accent" href="https://drive.google.com/file/d/19aaS3BB-kCN-iVnfD7NAsqAmKjWdIBgS/view?usp=drive_link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Изтегли</a>
+              <a class="btn btn-accent" href="apps/ibox.html">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             </div>
           </div>
         </article>
-
         <article class="card">
-          <div class="shot rd"><div><b>rd<span>Box</span></b><small>Remote Desktop</small></div></div>
+          <a class="card-link" href="apps/rdbox.html" tabindex="-1" aria-hidden="true"><div class="shot rd"><div><b>rd<span>Box</span></b><small>Remote Desktop</small></div></div></a>
           <div class="body">
-            <h3>rdBox <span class="tag dev">В разработка</span></h3>
+            <h3><a href="apps/rdbox.html">rdBox</a> <span class="tag dev">В разработка</span></h3>
             <p class="motto">Отдалечен достъп до компютър</p>
             <p class="desc">В локалната мрежа или през интернет, със защитена връзка, списък с любими компютри и прехвърляне на файлове.</p>
+            <div class="dl">
+              <a class="btn btn-accent" href="apps/rdbox.html">Виж повече<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
           </div>
         </article>
-
       </div>
     </div>
   </section>
@@ -292,7 +182,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
   </section>
 </main>
-
 <footer>
   <div class="wrap">
     <span>BoxLab · © 2026 Петко Петков (5co). Всички права запазени.</span>
