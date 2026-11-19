@@ -140,5 +140,6 @@ section.block.alt{background:#0f1420;border-top:1px solid var(--line);border-bot
 .reqs li::marker{color:var(--accent)}
 .app-support{margin-top:48px;justify-content:flex-start}
 .app-support .support-text{flex:1;min-width:240px}
+.support p{max-width:78ch}
 .support-qr .qr{width:124px;height:124px;display:block;border-radius:10px}
 @media (max-width:860px){.app-grid{grid-template-columns:1fr}.app-side{position:static}}

@@ -349,7 +349,7 @@ def build_index():
       <div class="support">
         <div>
           <h3>Подкрепи разработките</h3>
-          <p>Ако програмите ви помагат, можете да подкрепите разработката им с малко дарение чрез Revolut.</p>
+          <p>Благодаря, че ползвате програмите ми! Зад всяка от тях стоят много вечери, тестове и поправки. Създавам ги в малкото свободно време, с което разполагам, и ги споделям напълно безплатно, защото вярвам, че добрите инструменти трябва да са достъпни за всички. Ако някоя от тях ви е спестила време, можете да подкрепите разработката чрез Revolut — така ще има нови функции, поправки и нови програми. Всяка подкрепа, голяма или малка, означава много.</p>
         </div>
         <a class="btn btn-accent" href="{REVOLUT}" target="_blank" rel="noopener" data-goatcounter-click="revolut" data-goatcounter-title="Revolut — подкрепа">Отвори Revolut</a>
       </div>
@@ -383,6 +383,14 @@ def build_app(a):
           <div class="pending">{msg}</div>
           <p class="fine">Бутонът за изтегляне ще се появи тук, когато програмата е готова.</p>'''
     note = f'<p class="note">{escape(a["note"])}</p>' if a.get("note") else ""
+    if a["downloads"]:
+        support_text = (f"Благодаря, че ползвате {name}! Зад програмата стоят много вечери, тестове и поправки, "
+                        f"а я споделям напълно безплатно. Ако ви е спестила време, подкрепете разработката чрез Revolut — "
+                        f"така {name} ще получава нови функции и поправки. Всяка подкрепа, голяма или малка, означава много.")
+    else:
+        support_text = (f"{name} се създава в малкото ми свободно време и ще бъде напълно безплатна. "
+                        f"Ако искате да я видите по-скоро, подкрепете разработката чрез Revolut. "
+                        f"Всяка подкрепа, голяма или малка, означава много.")
     html = head(f"{a['name']} — BoxLab", p, a["short"])
     html += f'''
 <main id="top" class="app">
@@ -416,7 +424,7 @@ def build_app(a):
       <div class="support-qr"><a href="{REVOLUT}" target="_blank" rel="noopener" data-goatcounter-click="revolut" data-goatcounter-title="Revolut — подкрепа">{QR}</a></div>
       <div class="support-text">
         <h3>Подкрепи разработката на {name}</h3>
-        <p>{name} е безплатна. Ако ви помага в работата, можете да подкрепите следващите версии с малко дарение чрез Revolut — сканирайте кода или натиснете бутона.</p>
+        <p>{support_text}</p>
       </div>
       <a class="btn btn-accent" href="{REVOLUT}" target="_blank" rel="noopener" data-goatcounter-click="revolut" data-goatcounter-title="Revolut — подкрепа">Отвори Revolut</a>
     </div>
@@ -464,6 +472,7 @@ section.block.alt{background:#0f1420;border-top:1px solid var(--line);border-bot
 .reqs li::marker{color:var(--accent)}
 .app-support{margin-top:48px;justify-content:flex-start}
 .app-support .support-text{flex:1;min-width:240px}
+.support p{max-width:78ch}
 .support-qr .qr{width:124px;height:124px;display:block;border-radius:10px}
 @media (max-width:860px){.app-grid{grid-template-columns:1fr}.app-side{position:static}}
 """
