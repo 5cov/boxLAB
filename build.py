@@ -236,6 +236,7 @@ def head(title, prefix, desc):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{prefix}css/style.css">
+<script data-goatcounter="https://5co.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
 <header class="nav">
@@ -247,7 +248,7 @@ def head(title, prefix, desc):
       <a href="{prefix}index.html#about">За мен</a>
       <a href="{prefix}index.html#contact">Контакти</a>
     </nav>
-    <a class="btn btn-accent" href="{REVOLUT}" target="_blank" rel="noopener">Подкрепи разработките</a>
+    <a class="btn btn-accent" href="{REVOLUT}" target="_blank" rel="noopener" data-goatcounter-click="revolut" data-goatcounter-title="Revolut — подкрепа">Подкрепи разработките</a>
   </div>
 </header>
 '''
@@ -292,7 +293,7 @@ def build_index():
       <p>Безплатни програми за Windows от Петко Петков (5co) — за учители, ученици и всеки, който иска нещата да работят просто.</p>
       <div class="actions">
         <a class="btn btn-accent" href="#school">Разгледай програмите</a>
-        <a class="btn btn-ghost" href="{REVOLUT}" target="_blank" rel="noopener">Подкрепи разработките</a>
+        <a class="btn btn-ghost" href="{REVOLUT}" target="_blank" rel="noopener" data-goatcounter-click="revolut" data-goatcounter-title="Revolut — подкрепа">Подкрепи разработките</a>
       </div>
       <div class="facts">
         <div><b>{len(APPS)}</b>програми</div>
@@ -339,8 +340,8 @@ def build_index():
           <li><span>Facebook</span><a href="{FACEBOOK}" target="_blank" rel="noopener">facebook.com/petko.petkov.104</a></li>
         </ul>
         <div class="qr-box">
-          <a href="{REVOLUT}" target="_blank" rel="noopener">{QR}</a>
-          <div><span>Revolut</span><a href="{REVOLUT}" target="_blank" rel="noopener">revolut.me/5co5cov</a><small>Сканирай с телефона, за да подкрепиш разработките.</small></div>
+          <a href="{REVOLUT}" target="_blank" rel="noopener" data-goatcounter-click="revolut" data-goatcounter-title="Revolut — подкрепа">{QR}</a>
+          <div><span>Revolut</span><a href="{REVOLUT}" target="_blank" rel="noopener" data-goatcounter-click="revolut" data-goatcounter-title="Revolut — подкрепа">revolut.me/5co5cov</a><small>Сканирай с телефона, за да подкрепиш разработките.</small></div>
         </div>
       </div>
     </div>
@@ -350,7 +351,7 @@ def build_index():
           <h3>Подкрепи разработките</h3>
           <p>Ако програмите ви помагат, можете да подкрепите разработката им с малко дарение чрез Revolut.</p>
         </div>
-        <a class="btn btn-accent" href="{REVOLUT}" target="_blank" rel="noopener">Отвори Revolut</a>
+        <a class="btn btn-accent" href="{REVOLUT}" target="_blank" rel="noopener" data-goatcounter-click="revolut" data-goatcounter-title="Revolut — подкрепа">Отвори Revolut</a>
       </div>
     </div>
   </section>
@@ -368,7 +369,9 @@ def build_app(a):
     about = "".join(f"<p>{escape(t)}</p>" for t in a["about"])
     if a["downloads"]:
         btns = "".join(
-            f'<a class="btn {"btn-accent" if i == 0 else "btn-ghost"} wide" href="{u}" target="_blank" rel="noopener">'
+            f'<a class="btn {"btn-accent" if i == 0 else "btn-ghost"} wide" href="{u}" target="_blank" rel="noopener" '
+            f'data-goatcounter-click="download-{a["slug"]}{"" if i == 0 else "-" + str(i + 1)}" '
+            f'data-goatcounter-title="Изтегляне: {escape(a["name"])} ({escape(label)})">'
             f'{DL_ICON}{escape(label if label != "Изтегли" else "Изтегли за Windows")}<small>{size}</small></a>'
             for i, (label, u, size) in enumerate(a["downloads"]))
         dl = f'''<h3>Изтегляне</h3>
@@ -410,12 +413,12 @@ def build_app(a):
     </div>
 
     <div class="support app-support">
-      <div class="support-qr"><a href="{REVOLUT}" target="_blank" rel="noopener">{QR}</a></div>
+      <div class="support-qr"><a href="{REVOLUT}" target="_blank" rel="noopener" data-goatcounter-click="revolut" data-goatcounter-title="Revolut — подкрепа">{QR}</a></div>
       <div class="support-text">
         <h3>Подкрепи разработката на {name}</h3>
         <p>{name} е безплатна. Ако ви помага в работата, можете да подкрепите следващите версии с малко дарение чрез Revolut — сканирайте кода или натиснете бутона.</p>
       </div>
-      <a class="btn btn-accent" href="{REVOLUT}" target="_blank" rel="noopener">Отвори Revolut</a>
+      <a class="btn btn-accent" href="{REVOLUT}" target="_blank" rel="noopener" data-goatcounter-click="revolut" data-goatcounter-title="Revolut — подкрепа">Отвори Revolut</a>
     </div>
   </div>
 </main>
